@@ -1,11 +1,18 @@
 class ECG:
-    def __init__(self, t_list = None, v_list = None, delta_t = None):
+    def __init__(self, t_list=None, v_list=None, delta_t=None, minutes=1.0):
+        import numpy as np
         self.t_list = t_list
         self.v_list = v_list
-        self.duration = t_list[end]
+        self.duration = t_list[len(t_list)-1]
         self.delta_t = delta_t
+        self.num_beats = 0
+        self.beats = np.array([])
+        self.voltage_extremes = ()
+        self.minutes = minutes
+        self.mean_hr_bpm = 0
         self.count_beat()
         self.voltage_ex()
+        self.hr_bpm()
 
     def count_beat(self):
         """
@@ -28,32 +35,33 @@ class ECG:
             return
         else:
             logging.basicConfig(filename='count_beat.log', level=logging.DEBUG,
-                        filemode='w')
+                                filemode='w')
 
         max_voltage = max(self.v_list)
         index_max_v = self.v_list.index(max_voltage)
-        qrs = []
         if self.delta_t >= 0.01:
-            qrs = self.v_list[index_max_v -10:index_max_v + 10]
+            qrs = self.v_list[index_max_v - 10:index_max_v + 10]
         else:
             qrs = self.v_list[index_max_v - 20:index_max_v + 20]
 
         v_corr = np.correlate(self.v_list, qrs, "full")
         v_corr_max = max(v_corr)
         min_interval = 1/180
-        ind = detect_peaks(v_corr, mph=0.5 * v_corr_max, mpd=min_interval, edge='rising')
-        #num_beats
+        ind = detect_peaks(v_corr, mph=0.45 * v_corr_max, mpd=min_interval, edge='rising')
+        # num_beats
         self.num_beats = ind.size
         beat_list = []
         for index in ind:
             beat_list.append(self.t_list[index])
-        #beats
+        # beats
         self.beats = np.array(beat_list)
+
+    def hr_bpm(self):
+        from heartrate import heart_bpm
+        self.mean_hr_bpm = heart_bpm(self.num_beats,self.duration, self.minutes)
+        # beat_per_min = self.num_beats/(self.duration/60)
+        # self.mean_hr_bpm = beat_per_min*self.minutes
 
     def voltage_ex(self):
         from voltage_extremes import voltage_extremes
         self.voltage_extremes = voltage_extremes(self.v_list)
-
-
-
-

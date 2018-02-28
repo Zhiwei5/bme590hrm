@@ -70,12 +70,14 @@ def detect_peaks(x, mph=None, mpd=1, threshold=0, edge='rising',
     >>> # set threshold = 2
     >>> detect_peaks(x, threshold = 2, show=True)
     """
-    try
+    try:
         import numpy as np
+        import logging
     except ImportError:
         print("Necessary imports failed")
         return
-
+    logging.basicConfig(filename='max_difference.log', filemode='w',
+                        level=logging.DEBUG)
     x = np.atleast_1d(x).astype('float64')
     if x.size < 3:
         return np.array([], dtype=int)
