@@ -16,9 +16,7 @@ class ECG:
 
     def count_beat(self):
         """
-            Returns the maximum difference of a list
-            :param x: list to be input
-            :type x: list
+            calculate several attributes of class ECG
             :raises ImportError: if import is failure
 
             :return: several attributes
