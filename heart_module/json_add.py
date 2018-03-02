@@ -16,8 +16,9 @@ def json_add(mean_hr_bpm, voltage_extremes, duration, num_beats, beats, info):
             :rtype: float
             """
     # ecg_info = dict()
-    ecg_info = {'mean_hr_bpm': mean_hr_bpm, 'voltage_extremes': voltage_extremes,
-                'duration': duration, 'num_beats': num_beats, 'beats': beats}
+    ecg_info = {'mean_hr_bpm': mean_hr_bpm, 'voltage_extremes':
+                voltage_extremes, 'duration': duration,
+                'num_beats': num_beats, 'beats': beats}
     try:
         import json
         import logging
