@@ -13,18 +13,17 @@ class ECG:
         self.count_beat()
         self.voltage_ex()
         self.hr_bpm()
+
     def count_beat(self):
         """
-                Returns the maximum difference of a list
+            Returns the maximum difference of a list
                 
-                :param x: list to be input
-                :type x: list
-                :raises TypeError: if input is not a list
-                :raises ValueError: if the list contains a non-float or integer
-                :raises ValueError: if list contains +/-infinity
+            :param x: list to be input
+            :type x: list
+            :raises ImportError: if import is failure
 
-                :return: the maximum difference of adjacent numbers
-                :rtype: float
+            :return: several attributes
+            :rtype: float, numpy.array, list
                 """
         try:
             import numpy as np
@@ -56,12 +55,14 @@ class ECG:
         self.beats = np.array(beat_list)
         self.beat_list = beat_list
         logging.info("function run as expected")
+
     def hr_bpm(self):
         from heart_module.heartrate import heart_bpm
         self.mean_hr_bpm = heart_bpm(self.num_beats, self.duration,
                                      self.minutes)
         # beat_per_min = self.num_beats/(self.duration/60)
         # self.mean_hr_bpm = beat_per_min*self.minutes
+
     def voltage_ex(self):
         from heart_module.voltage_extremes import voltage_extremes
         self.voltage_extremes = voltage_extremes(self.v_list)
