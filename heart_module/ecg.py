@@ -47,7 +47,7 @@ class ECG:
         v_corr = np.correlate(self.v_list, qrs, "full")
         v_corr_max = max(v_corr)
         min_interval = 1/180
-        ind = detect_peaks(v_corr, mph=0.5 * v_corr_max, mpd=min_interval, edge='rising')
+        ind = detect_peaks(v_corr, mph=0.5 * v_corr_max, mpd=min_interval, edge ='rising')
         # num_beats
         self.num_beats = ind.size
         beat_list = []
@@ -60,7 +60,8 @@ class ECG:
 
     def hr_bpm(self):
         from heart_module.heartrate import heart_bpm
-        self.mean_hr_bpm = heart_bpm(self.num_beats,self.duration, self.minutes)
+        self.mean_hr_bpm = heart_bpm(self.num_beats, self.duration,
+                                     self.minutes)
         # beat_per_min = self.num_beats/(self.duration/60)
         # self.mean_hr_bpm = beat_per_min*self.minutes
 

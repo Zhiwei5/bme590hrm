@@ -16,8 +16,8 @@ def voltage_extremes(x):
         print("Could not import logging module")
         return
     else:
-        logging.basicConfig(filename='voltage_extremes.log', level=logging.DEBUG,
-                            filemode='w')
+        logging.basicConfig(filename='voltage_extremes.log',
+                            level=logging.DEBUG, filemode='w')
     if type(x) is not list:
         logging.error('Watch out!The input should be list')
         raise TypeError('TypeError with the input')

@@ -1,6 +1,7 @@
 def detect_peaks(x, mph=None, mpd=1, threshold=0, edge='rising',
                  kpsh=False, valley=False):
-    """Detect peaks in data based on their amplitude and other features.It is not my work.It is a open file on github
+    """Detect peaks in data based on their amplitude and other features.It is not my work.
+        It is a open file on github
 
     Parameters
     ----------
@@ -39,7 +40,8 @@ def detect_peaks(x, mph=None, mpd=1, threshold=0, edge='rising',
 
     References
     ----------
-    .. [1] http://nbviewer.ipython.org/github/demotu/BMC/blob/master/notebooks/DetectPeaks.ipynb
+    .. [1] http://nbviewer.ipython.org/github/demotu/BMC/blob/master/notebooks/
+        DetectPeaks.ipynb
 
     Examples
     --------

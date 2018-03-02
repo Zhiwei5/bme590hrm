@@ -15,10 +15,11 @@ def test_json_add():
     test_voltage_extremes = (2, 7)
     test_duration = 30
     test_num_beats = 30
-    test_beats = [1,2,3]
+    test_beats = [1, 2, 3]
     test_info = 'test.csv'
     # (mean_hr_bpm, voltage_extremes, duration, num_beats, beats, info):
-    json_add(test_mean_hr_bpm, test_voltage_extremes, test_duration, test_num_beats,test_beats, test_info)
+    json_add(test_mean_hr_bpm, test_voltage_extremes, test_duration,
+             test_num_beats, test_beats, test_info)
 
     data = json.load(open('test.json'))
     pprint(data)
@@ -26,4 +27,4 @@ def test_json_add():
     assert data['voltage_extremes'] == [2, 7]
     assert data['duration'] == 30
     assert data['num_beats'] == 30
-    assert data['beats'] == [1,2,3]
+    assert data['beats'] == [1, 2, 3]

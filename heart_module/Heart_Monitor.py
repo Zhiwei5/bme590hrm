@@ -1,5 +1,5 @@
 def main():
-    if __name__== "__main__":
+    if __name__ == "__main__":
         import glob
         import logging
         logging.basicConfig(filename='main.log', level=logging.DEBUG,
@@ -27,11 +27,10 @@ def main():
             delta_t = time[2] - time[1]
             str_minutes = input()
             minutes = float(str_minutes)
-            #print(time)
             from heart_module.ecg import ECG
-            patient= ECG(time,voltage,delta_t,minutes)
+            patient = ECG(time, voltage, delta_t, minutes)
             print(patient.num_beats)
             from heart_module.json_add import json_add
-            json_add(patient.mean_hr_bpm, patient.voltage_extremes, patient.duration, patient.num_beats,
-                     patient.beat_list, info)
+            json_add(patient.mean_hr_bpm, patient.voltage_extremes, patient.duration,
+                     patient.num_beats, patient.beat_list, info)
             logging.info("function run as expected")
