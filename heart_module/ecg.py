@@ -24,7 +24,7 @@ class ECG:
 
             :return: several attributes
             :rtype: float, numpy.array, list
-                """
+            """
         try:
             import numpy as np
             import logging
