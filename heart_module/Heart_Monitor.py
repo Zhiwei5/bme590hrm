@@ -28,7 +28,7 @@ def main():
         minutes = float(str_minutes)
         from heart_module.ecg import ECG
         patient = ECG(time, voltage, delta_t, minutes)
-        print(patient.num_beats)
+        # print(patient.num_beats)
         from heart_module.json_add import json_add
         json_add(patient.mean_hr_bpm, patient.voltage_extremes,
                  patient.duration, patient.num_beats, patient.beat_list,
