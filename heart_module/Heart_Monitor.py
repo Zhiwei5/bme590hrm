@@ -31,6 +31,7 @@ def main():
             patient = ECG(time, voltage, delta_t, minutes)
             print(patient.num_beats)
             from heart_module.json_add import json_add
-            json_add(patient.mean_hr_bpm, patient.voltage_extremes, patient.duration,
-                     patient.num_beats, patient.beat_list, info)
+            json_add(patient.mean_hr_bpm, patient.voltage_extremes,
+                     patient.duration, patient.num_beats, patient.beat_list,
+                     info)
             logging.info("function run as expected")

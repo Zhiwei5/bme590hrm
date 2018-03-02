@@ -3,7 +3,8 @@ Assignment 7 heart rate monitor
 All the required file are in the heart_module
 The Heart_Monitor.py is the main function of this module
 Instructions to use:
-Put heart_module into your folder of all CSV file. Run the main function, and corresponding JSON file contain all the calculated result will be created in your folder.
+Put heart_module into your folder of all CSV file. Run the main function, and corresponding JSON files contain all the calculated results will be created in your folder.
+Need input for number of minutes to calculate the mean_hr_bpm. Input type should be float
 
 MIT License
 
