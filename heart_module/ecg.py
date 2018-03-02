@@ -43,7 +43,6 @@ class ECG:
             qrs = self.v_list[index_max_v - 10:index_max_v + 10]
         else:
             qrs = self.v_list[index_max_v - 20:index_max_v + 20]
-
         v_corr = np.correlate(self.v_list, qrs, "full")
         v_corr_max = max(v_corr)
         min_interval = 1/180
